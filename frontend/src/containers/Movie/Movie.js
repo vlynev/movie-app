@@ -4,6 +4,8 @@ import Loader from '../../components/Loader/Loader';
 import config from '../../config';
 import {getMovie} from '../../utils/api/actions';
 import {Redirect} from 'react-router-dom';
+import MovieMenu from '../../components/MovieMenu';
+import Star from '../../components/Star/Star';
 
 const posterBaseUrl = config.posterBaseUrl;
 
@@ -24,6 +26,14 @@ export default class Movie extends React.Component {
     this.setState({movie: await getMovie(this.movieId)});
   }
 
+  handleClick(isPressed) {
+    if (isPressed) {
+     console.log('add to favorites');
+    } else {
+      console.log('remove from favorites');
+    }
+  }
+
   render() {
     if (!this.props.token) {
       return <Redirect to="/login"/>
@@ -36,11 +46,15 @@ export default class Movie extends React.Component {
     }
 
     return (
-      <div key={movie.id}>
-        <h3>{movie.original_title}</h3>
+      <div>
+        <MovieMenu />
+        <Star pressed={false} handleClick={(isPressed) => this.handleClick(isPressed)}/>
+        <div key={movie.id} className="movie-page">
+          <h1>{movie.original_title}</h1>
 
-        <img src={`${posterBaseUrl}${movie.poster_path}`}/> <br/>
-        <p>{movie.overview}</p>
+          <img src={`${posterBaseUrl}${movie.poster_path}`}/> <br/>
+          <p>{movie.overview}</p>
+        </div>
       </div>
     )
   }

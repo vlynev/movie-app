@@ -2,6 +2,7 @@ import React from 'react';
 import config from '../config';
 import {Redirect, Link} from 'react-router-dom';
 import Loader from './Loader/Loader'
+import MainMenu from './MainMenu';
 
 const posterBaseUrl = config.posterBaseUrl;
 
@@ -42,14 +43,19 @@ export default class BaseGridView extends React.Component {
       return <Redirect to="/login"/>
     }
 
+    let content = this.state.movies;
+
     if (this.state.movies.length == 0) {
-      return <Loader />
+      content = <Loader />
     }
 
     return (
-      <div className="Panel">
-        <div className="Grid Grid--alignCenter">
-          {this.state.movies}
+      <div>
+        <MainMenu />
+        <div className="Panel">
+          <div className="Grid Grid--alignCenter">
+            {content}
+          </div>
         </div>
       </div>
     );

@@ -11,3 +11,17 @@
   text-align: center;
   padding: 5px;
 }
+
+.movie-page{
+  padding: 5px;
+}
+
+.movie-page h1{
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.movie-page p{
+  padding: 10px;
+}
