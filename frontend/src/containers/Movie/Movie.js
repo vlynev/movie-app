@@ -3,6 +3,7 @@ import './Movie.css';
 import Loader from '../../components/Loader/Loader';
 import config from '../../config';
 import {getMovie} from '../../utils/api/actions';
+import {Redirect} from 'react-router-dom';
 
 const posterBaseUrl = config.posterBaseUrl;
 
@@ -18,10 +19,16 @@ export default class Movie extends React.Component {
   }
 
   async componentDidMount() {
+    if (!this.props.token) {return;}
+
     this.setState({movie: await getMovie(this.movieId)});
   }
 
   render() {
+    if (!this.props.token) {
+      return <Redirect to="/login"/>
+    }
+
     const movie = this.state.movie;
 
     if (!movie.id) {

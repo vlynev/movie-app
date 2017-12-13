@@ -1,6 +1,7 @@
 import React from 'react';
 import config from '../config';
 import {Redirect, Link} from 'react-router-dom';
+import Loader from './Loader/Loader'
 
 const posterBaseUrl = config.posterBaseUrl;
 
@@ -19,6 +20,8 @@ export default class BaseGridView extends React.Component {
   }
 
   async componentDidMount() {
+    if (!this.props.token) {return;}
+
     const data = await this.getContent();
     const movies = data.map((movie) => {
       return (
@@ -37,6 +40,10 @@ export default class BaseGridView extends React.Component {
   render() {
     if (!this.props.token) {
       return <Redirect to="/login"/>
+    }
+
+    if (this.state.movies.length == 0) {
+      return <Loader />
     }
 
     return (
