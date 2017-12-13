@@ -11,7 +11,7 @@ import Login from './containers/Login';
 import SignUp from './containers/SignUp';
 import Dashboard from './containers/Dashboard';
 import Favorites from './containers/Favorites';
-import Movie from "./containers/Movie";
+import Movie from "./containers/Movie/Movie";
 
 export default class App extends React.Component {
   constructor(props) {
