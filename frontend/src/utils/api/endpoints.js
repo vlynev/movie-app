@@ -4,6 +4,7 @@ export const types = {
   CREATE_USER: 'CREATE_USER',
   LOGIN: 'LOGIN', // implemented
   MOVIES: 'MOVIES', // implemented
+  MOVIE: 'MOVIES/:id', // implemented
   CONFIGURATION: 'CONFIGURATION',
   FAVORITES: 'FAVORITES',
   ADD_FAVORITES: 'ADD_FAVORITES',
@@ -19,6 +20,9 @@ const endpointsBuilders = {
   [types.MOVIES]() {
     return '/movies'; // implemented
   },
+  [types.MOVIE](id) {
+    return `/movies/${id}`; // implemented
+  },
   [types.CONFIGURATION]() {
     return '/movies/configuration';
   },
@@ -27,7 +31,7 @@ const endpointsBuilders = {
   },
   [types.ADD_FAVORITES]() {
     return '/user/favorites';
-  },
+  }
 };
 
 

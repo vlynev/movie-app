@@ -21,6 +21,15 @@ export const postLogin = (username, password) => {
 };
 
 /**
+ * Get movie
+ * @return {Promise<object>}
+ * */
+export const getMovie = (id) => {
+  const url = buildUrl(types.MOVIE, id);
+  return request(url).then((response) => response.data.movie || {});
+};
+
+/**
  * Get all movies
  * @return {Promise<array>}
  * */
