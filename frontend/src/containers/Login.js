@@ -1,5 +1,6 @@
 import React from 'react';
 import {postLogin, getConfiguration} from '../utils/api/actions';
+import {setVal, getVal} from '../utils/storage';
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -15,11 +16,8 @@ export default class Login extends React.Component {
       return;
     }
 
-    const {token} = data;
-    localStorage.setItem('token', token);
-
-    const confiruration = await getConfiguration();
-    localStorage.setItem('confiruration', JSON.stringify(confiruration));
+    setVal('token', data.token);
+    setVal('confiruration', await getConfiguration());
 
     window.location.pathname = '/';
   }
