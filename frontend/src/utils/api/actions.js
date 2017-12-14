@@ -23,14 +23,14 @@ export const postLogin = (username, password) => {
 /**
  * @param - Id of moviee
  * */
-export const addFavorites = (id) => {
+export const addFavorites = (movieDBId) => {
   const url = buildUrl(types.ADD_FAVORITES);
   return request(url, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
     },
-    body: JSON.stringify({ id })
+    body: JSON.stringify({ movieDBId })
   });
 };
 
