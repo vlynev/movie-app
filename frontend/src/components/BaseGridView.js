@@ -11,7 +11,7 @@ export default class BaseGridView extends React.Component {
     super(props);
 
     this.state = {
-      movies: []
+      content: <Loader />
     };
   }
 
@@ -21,21 +21,28 @@ export default class BaseGridView extends React.Component {
   }
 
   async componentDidMount() {
-    if (!this.props.token) {return;}
+    if (!this.props.token) {
+      return;
+    }
 
     const data = await this.getContent();
-    const movies = data.map((movie) => {
-      return (
-        <div className="Grid-cell u-md-size1of4 movie-grid-item" key={movie.id}>
-          <Link to={`/movie/${movie.id}`}>
-            <img src={`${posterBaseUrl}${movie.poster_path}`}/> <br/>
-            <h3>{movie.original_title}</h3>
-          </Link>
-        </div>
-      )
-    });
 
-    this.setState({movies: movies});
+    if (data.length > 0) {
+      this.setState({content: data.map(this.renderMovieItem)});
+    } else {
+      this.setState({content: <h1>No Records</h1>});
+    }
+  }
+
+  renderMovieItem(movie) {
+    return (
+      <div className="Grid-cell u-md-size1of4 movie-grid-item" key={movie.id}>
+        <Link to={`/movie/${movie.id}`}>
+          <img src={`${posterBaseUrl}${movie.poster_path}`}/> <br/>
+          <h3>{movie.original_title}</h3>
+        </Link>
+      </div>
+    )
   }
 
   render() {
@@ -43,18 +50,12 @@ export default class BaseGridView extends React.Component {
       return <Redirect to="/login"/>
     }
 
-    let content = this.state.movies;
-
-    if (this.state.movies.length == 0) {
-      content = <Loader />
-    }
-
     return (
       <div>
         <MainMenu />
         <div className="Panel">
           <div className="Grid Grid--alignCenter">
-            {content}
+            {this.state.content}
           </div>
         </div>
       </div>

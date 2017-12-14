@@ -16,7 +16,21 @@ export const postLogin = (username, password) => {
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
     },
-    body: JSON.stringify({ username, password }),
+    body: JSON.stringify({ username, password })
+  });
+};
+
+/**
+ * @param - Id of moviee
+ * */
+export const addFavorites = (id) => {
+  const url = buildUrl(types.ADD_FAVORITES);
+  return request(url, {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+    body: JSON.stringify({ id })
   });
 };
 

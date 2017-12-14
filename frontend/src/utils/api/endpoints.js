@@ -7,7 +7,7 @@ export const types = {
   MOVIE: 'MOVIES/:id', // implemented
   CONFIGURATION: 'CONFIGURATION',
   FAVORITES: 'FAVORITES',
-  ADD_FAVORITES: 'ADD_FAVORITES',
+  ADD_FAVORITES: 'ADD_FAVORITES', // implemented
 };
 
 const endpointsBuilders = {
@@ -30,7 +30,7 @@ const endpointsBuilders = {
     return '/user/favorites';
   },
   [types.ADD_FAVORITES]() {
-    return '/user/favorites';
+    return '/user/favorites'; // implemented
   }
 };
 

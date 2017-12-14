@@ -2,7 +2,7 @@ import React from 'react';
 import './Movie.css';
 import Loader from '../../components/Loader/Loader';
 import config from '../../config';
-import {getMovie} from '../../utils/api/actions';
+import {getMovie, addFavorites} from '../../utils/api/actions';
 import {Redirect} from 'react-router-dom';
 import MovieMenu from '../../components/MovieMenu';
 import Star from '../../components/Star/Star';
@@ -26,9 +26,12 @@ export default class Movie extends React.Component {
     this.setState({movie: await getMovie(this.movieId)});
   }
 
-  handleClick(isPressed) {
+  async handleClick(isPressed) {
     if (isPressed) {
-     console.log('add to favorites');
+      console.log('add to favorites ');
+
+      //const result = await addFavorites(this.movieId);
+      //console.log(result);
     } else {
       console.log('remove from favorites');
     }
