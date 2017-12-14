@@ -30,7 +30,7 @@ export default class App extends React.Component {
             <Switch>
               <Route path="/login" component={Login}/>
               <Route path="/logout" component={Logout}/>
-              <Route path="/users/sign_up" component={SignUp}/>
+              <Route path="/sign-up" component={SignUp}/>
               <Route path="/favorites" component={(routeProps) => <Favorites {...routeProps} token={token}/>}/>
               <Route path="/movie/:id" component={(routeProps) => <Movie {...routeProps} token={token}/>}/>
               <Route path="/" component={(routeProps) => <Dashboard {...routeProps} token={token}/>}/>

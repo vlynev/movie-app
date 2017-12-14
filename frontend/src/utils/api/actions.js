@@ -21,6 +21,25 @@ export const postLogin = (username, password) => {
 };
 
 /**
+ * Try to create user into the application
+ * @param username    - Username from the user
+ * @param password    - Password from the user
+ * @returns {Promise<Object>}
+ * @property {string} data.message   - status of response
+ * @property {?string} data.token    - jwt token of request
+ */
+export const postSignUp = (username, password) => {
+  const url = buildUrl(types.CREATE_USER);
+  return request(url, {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+    body: JSON.stringify({ username, password })
+  })
+};
+
+/**
  * @param - Id of moviee
  * */
 export const addFavorites = (movieDBId) => {

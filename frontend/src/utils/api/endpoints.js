@@ -6,7 +6,7 @@ export const types = {
   MOVIES: 'MOVIES', // implemented
   MOVIE: 'MOVIES/:id', // implemented
   CONFIGURATION: 'CONFIGURATION',
-  FAVORITES: 'FAVORITES',
+  FAVORITES: 'FAVORITES', // implemented
   ADD_FAVORITES: 'ADD_FAVORITES', // implemented
 };
 
