@@ -2,12 +2,12 @@ import config from '../../config';
 
 export const types = {
   CREATE_USER: 'CREATE_USER',
-  LOGIN: 'LOGIN', // implemented
-  MOVIES: 'MOVIES', // implemented
-  MOVIE: 'MOVIES/:id', // implemented
+  LOGIN: 'LOGIN',
+  MOVIES: 'MOVIES',
+  MOVIE: 'MOVIES/:id',
   CONFIGURATION: 'CONFIGURATION',
-  FAVORITES: 'FAVORITES', // implemented
-  ADD_FAVORITES: 'ADD_FAVORITES', // implemented
+  FAVORITES: 'FAVORITES',
+  ADD_FAVORITES: 'ADD_FAVORITES',
 };
 
 const endpointsBuilders = {
@@ -15,13 +15,13 @@ const endpointsBuilders = {
     return '/user';
   },
   [types.LOGIN]() {
-    return '/login'; // implemented
+    return '/login';
   },
   [types.MOVIES]() {
-    return '/movies'; // implemented
+    return '/movies';
   },
   [types.MOVIE](id) {
-    return `/movies/${id}`; // implemented
+    return `/movies/${id}`;
   },
   [types.CONFIGURATION]() {
     return '/movies/configuration';
@@ -30,10 +30,9 @@ const endpointsBuilders = {
     return '/user/favorites';
   },
   [types.ADD_FAVORITES]() {
-    return '/user/favorites'; // implemented
+    return '/user/favorites';
   }
 };
-
 
 function buildApiUrl(path) {
   const adjustedPath = path[0] !== '/' ? '/' + path : path;

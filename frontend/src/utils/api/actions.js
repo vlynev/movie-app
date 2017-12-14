@@ -40,7 +40,7 @@ export const postSignUp = (username, password) => {
 };
 
 /**
- * @param - Id of moviee
+ * @param movieDBId of movie
  * */
 export const addFavorites = (movieDBId) => {
   const url = buildUrl(types.ADD_FAVORITES);
@@ -78,4 +78,14 @@ export const getMovies = () => {
 export const getFavorites = () => {
   const url = buildUrl(types.FAVORITES);
   return request(url).then((response) => response.data.movies || []);
+};
+
+/**
+ * Get configuration
+ * @return {Promise<object>}
+ * */
+export const getConfiguration = () => {
+  const url = buildUrl(types.CONFIGURATION);
+
+  return request(url).then((response) => response.data);
 };

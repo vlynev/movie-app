@@ -1,7 +1,6 @@
 import React from 'react';
 import {postSignUp} from '../utils/api/actions';
 
-
 export default class SignUp extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +17,7 @@ export default class SignUp extends React.Component {
 
     const {message} = data;
 
-    if (message == 'ok') {
+    if (message === 'ok') {
       window.location.pathname = '/login'
     }
   }
