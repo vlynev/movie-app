@@ -1,5 +1,6 @@
 .movie-grid-item{
   margin: 0 0 10px 0;
+  text-align: center;
 }
 
 .movie-grid-item img{
@@ -30,6 +31,10 @@
 .poster-container{
   width: 50%;
   float: left;
+}
+
+.poster-container img{
+  max-width: 100%;
 }
 
 .overview-container{

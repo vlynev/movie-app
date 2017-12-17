@@ -53,16 +53,20 @@ export default class Movie extends React.Component {
         <MoviePanel movie={movie}>
           <FavoritesStar pressed={false} handleClick={(isPressed) => this.handleClick(isPressed)}/>
         </MoviePanel>
-        <div key={movie.id} className="movie-page">
-          <h1>{movie.original_title}</h1>
-          <div>
-            <div className="poster-container">
-              <img src={`${posterBaseUrl}${movie.poster_path}`}/>
+        <div className="Panel">
+          <div className="Grid Grid--alignCenter">
+            <div key={movie.id} className="movie-page Grid-cell">
+              <h1>{movie.original_title}</h1>
+              <div>
+                <div className="poster-container">
+                  <img src={`${posterBaseUrl}${movie.poster_path}`}/>
+                </div>
+                <div className="overview-container">
+                  <p>{movie.overview}</p>
+                </div>
+                <div className="clear"></div>
+              </div>
             </div>
-            <div className="overview-container">
-              <p>{movie.overview}</p>
-            </div>
-            <div className="clear"></div>
           </div>
         </div>
       </div>
