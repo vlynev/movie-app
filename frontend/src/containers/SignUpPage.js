@@ -1,5 +1,5 @@
 import React from 'react';
-import {postSignUp} from '../utils/api/actions';
+import * as actions from '../utils/api/actions';
 
 export default class SignUp extends React.Component {
   constructor(props) {
@@ -9,7 +9,7 @@ export default class SignUp extends React.Component {
   async handleSubmit(e) {
     e.preventDefault();
 
-    const {data, err} = await postSignUp(this._username.value, this._password.value);
+    const {data, err} = await actions.postSignUp(this._username.value, this._password.value);
     if (err) {
       // do something here
       return;

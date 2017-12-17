@@ -1,5 +1,4 @@
 const isObject = (val) => typeof val === "object";
-const isJson = (str) => str.charAt(0) === '"' && str.charAt(str.length-1) === '"';
 
 export const setVal = (key, value) => {
   if (isObject(value)) {
@@ -16,9 +15,9 @@ export const getVal = (key) => {
     return false;
   }
 
-  if (isJson(value)) {
+  try {
     return JSON.parse(value);
-  }
+  } catch (e) {}
 
   return value;
 };

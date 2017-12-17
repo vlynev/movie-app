@@ -1,11 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import './TopPanel.css';
 
 export default () => {
   const token = localStorage.getItem('token');
 
   return (
-    <div className="nav-bar text-center">
+    <div className="nav-bar text-center top-panel main-panel">
       <nav>
         <ul>
           <li className="Button"><Link to={"/"}>Home</Link></li>

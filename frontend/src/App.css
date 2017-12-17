@@ -4,3 +4,14 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.clear{
+  clear: both;
+}
+
+.left{
+  float: left;
+}
+
+.right{
+  float: right;
+}

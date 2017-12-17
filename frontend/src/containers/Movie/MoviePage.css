@@ -20,8 +20,32 @@
   font-weight: bold;
   text-align: center;
   padding-bottom: 10px;
+  font-size: 20pt;
 }
 
 .movie-page p{
   padding: 10px;
+}
+
+.poster-container{
+  width: 50%;
+  float: left;
+}
+
+.overview-container{
+  width: 50%;
+  float: right;
+}
+
+@media (max-width: 1024px) {
+  .poster-container{
+    width: 100%;
+    float: none;
+    text-align: center;
+  }
+
+  .overview-container{
+    width: 100%;
+    float: none;
+  }
 }

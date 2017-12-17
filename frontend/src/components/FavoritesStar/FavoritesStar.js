@@ -1,7 +1,7 @@
 import React from 'react';
-import './Star.css';
+import './FavoritesStar.css';
 
-export default class Star extends React.Component{
+export default class FavoritesStar extends React.Component{
   constructor(props) {
     super(props);
 
@@ -21,12 +21,12 @@ export default class Star extends React.Component{
   }
 
   render() {
-    let content = this.state.isPressed ? (<b>★</b>) : (<b>☆</b>);
+    const content = this.state.isPressed ? (<span>★</span>) : (<span>☆</span>);
 
     return (
-      <div className="favorites-star" onClick={() => this.handleClick()}>
+      <span className="favorites-star" onClick={() => this.handleClick()}>
         {content}
-      </div>
+      </span>
     )
   }
 }

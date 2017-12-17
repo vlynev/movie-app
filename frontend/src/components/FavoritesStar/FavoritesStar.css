@@ -1,0 +1,7 @@
+.favorites-star{
+  cursor: pointer;
+  font-size: 25pt;
+  display: inline-block;
+  vertical-align: sub;
+  font-weight: bold;
+}

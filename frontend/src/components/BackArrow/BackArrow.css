@@ -1,0 +1,15 @@
+.back-arrow{
+  font-size: 25pt;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: sub;
+  font-weight: bold;
+}
+
+.back-arrow a{
+  color: black;
+}
+
+.back-arrow a:hover{
+  color: #878f91;
+}

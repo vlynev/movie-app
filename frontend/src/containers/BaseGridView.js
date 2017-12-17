@@ -1,10 +1,10 @@
 import React from 'react';
-import config from '../config';
 import {Redirect, Link} from 'react-router-dom';
-import Loader from './Loader/Loader'
-import MainMenu from './MainMenu';
+import Loader from '../components/Loader/Loader'
+import MainMenu from '../components/TopPanel/MainPanel';
+import * as configuration from '../utils/api/configuration';
 
-const posterBaseUrl = config.posterBaseUrl;
+const posterBaseUrl = configuration.getBasePosterUrl(configuration.sizes.GRID_POSTER);
 
 export default class BaseGridView extends React.Component {
   constructor(props) {
@@ -28,7 +28,7 @@ export default class BaseGridView extends React.Component {
     const data = await this.getContent();
 
     if (data.length > 0) {
-      this.setState({content: data.map(this.renderMovieItem)});
+      this.setState({content: data.map(movie => this.renderMovieItem(movie))});
     } else {
       this.setState({content: <h1>No Records</h1>});
     }

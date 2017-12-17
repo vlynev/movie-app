@@ -7,12 +7,12 @@ import {
 } from 'react-router-dom';
 
 import Header from './components/Header/Header';
-import Login from './containers/Login';
-import Logout from './containers/Logout';
-import SignUp from './containers/SignUp';
-import Dashboard from './containers/Dashboard';
-import Favorites from './containers/Favorites';
-import Movie from "./containers/Movie/Movie";
+import Login from './containers/LoginPage';
+import Logout from './containers/LogoutPage';
+import SignUp from './containers/SignUpPage';
+import Dashboard from './containers/DashboardPage';
+import Favorites from './containers/FavoritesPage';
+import Movie from "./containers/Movie/MoviePage";
 import {setVal, getVal} from './utils/storage';
 
 export default class App extends React.Component {

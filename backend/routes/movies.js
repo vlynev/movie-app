@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Movies = require('../models/movies');
+const User = require('../models/user');
 const { body, validationResult } = require('express-validator/check');
 const { matchedData } = require('express-validator/filter');
 const debug = require('debug')('server:router:movies');
@@ -16,7 +17,11 @@ router.param('movieDBId', async (req, res, next, id) => {
       e.status = 404;
       return next(e);
     }
+
     req.movie = movie;
+
+    //req.movie.inFavorites = User.isMovieAleadyAdded(movie._id, req.user)
+
     return next();
   } catch (e) {
     e.status = 500;
