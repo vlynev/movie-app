@@ -10,7 +10,8 @@ import * as configuration from '../../utils/api/configuration';
 
 import './MoviePage.css';
 
-const posterBaseUrl = configuration.getBasePosterUrl(configuration.sizes.SINGLE_POSTER);
+const posterBaseUrl = configuration.getBasePosterUrl(configuration.poster_sizes.SINGLE);
+const backdropUrl = configuration.getBackdropUrl(configuration.backdrop_sizes.DEFAULT);
 
 export default class Movie extends React.Component {
   constructor(props) {
@@ -29,6 +30,8 @@ export default class Movie extends React.Component {
     }
 
     const movie = await actions.getMovie(this.movieId);
+
+    console.log(`${backdropUrl}${movie.backdrop_path}`);
 
     if (movie !== null) {
       this.setState({content: this.renderMovie(movie)});
@@ -65,7 +68,6 @@ export default class Movie extends React.Component {
                 </div>
                 <div className="clear"></div>
               </div>
-
             </div>
           </div>
         </div>

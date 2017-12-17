@@ -8,7 +8,7 @@ import * as configuration from '../../utils/api/configuration';
 
 import './BaseGridView.css';
 
-const posterBaseUrl = configuration.getBasePosterUrl(configuration.sizes.GRID_POSTER);
+const posterBaseUrl = configuration.getBasePosterUrl(configuration.poster_sizes.GRID);
 
 export default class BaseGridView extends React.Component {
   constructor(props) {
