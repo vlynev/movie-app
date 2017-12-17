@@ -1,8 +1,12 @@
 import React from 'react';
 import {Redirect, Link} from 'react-router-dom';
-import Loader from '../components/Loader/Loader'
-import MainMenu from '../components/TopPanel/MainPanel';
-import * as configuration from '../utils/api/configuration';
+
+import Loader from '../../components/Loader/Loader'
+import MainMenu from '../../components/TopPanel/MainPanel';
+
+import * as configuration from '../../utils/api/configuration';
+
+import './BaseGridView.css';
 
 const posterBaseUrl = configuration.getBasePosterUrl(configuration.sizes.GRID_POSTER);
 
@@ -15,7 +19,9 @@ export default class BaseGridView extends React.Component {
     };
   }
 
-  /* override this */
+  /**
+   * Need to be overridden
+   * */
   getContent() {
     return Promise.resolve([]);
   }
@@ -36,7 +42,7 @@ export default class BaseGridView extends React.Component {
 
   renderMovieItem(movie) {
     return (
-      <div className="Grid-cell u-md-size1of4 movie-grid-item" key={movie.id}>
+      <div className="Grid-cell u-md-size1of3 movie-grid-item" key={movie.id}>
         <Link to={`/movie/${movie.id}`}>
           <img src={`${posterBaseUrl}${movie.poster_path}`}/> <br/>
           <h3>{movie.original_title}</h3>

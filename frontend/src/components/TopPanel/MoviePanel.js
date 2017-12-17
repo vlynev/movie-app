@@ -10,6 +10,9 @@ export default (props) => {
       <div className="menu-item">
         <BackArrow to="/"/>
       </div>
+      <div className="menu-item">
+        <h1>{props.movie.original_title}</h1>
+      </div>
       {child}
       <div className="clear"></div>
     </div>

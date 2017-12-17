@@ -56,7 +56,6 @@ export default class Movie extends React.Component {
         <div className="Panel">
           <div className="Grid Grid--alignCenter">
             <div key={movie.id} className="movie-page Grid-cell">
-              <h1>{movie.original_title}</h1>
               <div>
                 <div className="poster-container">
                   <img src={`${posterBaseUrl}${movie.poster_path}`}/>
@@ -66,6 +65,7 @@ export default class Movie extends React.Component {
                 </div>
                 <div className="clear"></div>
               </div>
+
             </div>
           </div>
         </div>
