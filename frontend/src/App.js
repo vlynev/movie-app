@@ -8,11 +8,11 @@ import {
 
 import Header from './components/Header/Header';
 import LoginPage from './containers/LoginPage';
+import MoviePage from './containers/Movie/MoviePage';
 import LogoutPage from './containers/LogoutPage';
 import SignUpPage from './containers/SignUpPage';
 import DashboardPage from './containers/DashboardPage';
 import FavoritesPage from './containers/FavoritesPage';
-import MoviePage from "./containers/Movie/MoviePage";
 
 import * as storage from './utils/storage';
 
