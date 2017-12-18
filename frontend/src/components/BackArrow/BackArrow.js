@@ -1,11 +1,16 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { withRouter } from "react-router-dom";
+
 import './BackArrow.css';
 
-export default (props) => {
+const Back = ({ history }) => {
+  const to = history.length > 1 ? history.goBack : history.go('/');
+
   return (
-    <span className="back-arrow">
-      <Link to={props.to}>&larr;</Link>
+    <span className="back-arrow" onClick={to}>
+      &larr;
     </span>
-  )
-}
+  );
+};
+
+export default withRouter(Back);

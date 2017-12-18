@@ -8,7 +8,7 @@ export default (props) => {
   return (
     <div className="nav-bar text-left top-panel movie-panel">
       <div className="menu-item">
-        <BackArrow to="/"/>
+        <BackArrow/>
       </div>
       <div className="menu-item">
         <h1>{props.movie.original_title}</h1>
