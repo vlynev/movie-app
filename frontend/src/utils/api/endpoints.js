@@ -8,6 +8,7 @@ export const types = {
   CONFIGURATION: 'CONFIGURATION',
   FAVORITES: 'FAVORITES',
   ADD_FAVORITES: 'ADD_FAVORITES',
+  REMOVE_FAVORITES: 'REMOVE_FAVORITES'
 };
 
 const endpointsBuilders = {
@@ -31,6 +32,9 @@ const endpointsBuilders = {
   },
   [types.ADD_FAVORITES]() {
     return '/user/favorites';
+  },
+  [types.REMOVE_FAVORITES](id) {
+    return `/user/favorites/${id}`;
   }
 };
 

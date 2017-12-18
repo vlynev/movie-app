@@ -42,11 +42,13 @@ export default class Movie extends React.Component {
 
   async handleClick(isPressed) {
     if (isPressed) {
-      console.log('add to favorites ');
-
       const result = await actions.addFavorites(this.movieId);
+
+      console.log(`add to favorites ${result}`);
     } else {
-      console.log('remove from favorites');
+      const result = await actions.removeFavorites(this.movieId);
+
+      console.log(`remove from favorites ${result}`);
     }
   }
 
@@ -54,7 +56,7 @@ export default class Movie extends React.Component {
     return (
       <div>
         <MoviePanel movie={movie}>
-          <FavoritesStar pressed={false} handleClick={(isPressed) => this.handleClick(isPressed)}/>
+          <FavoritesStar pressed={movie.in_favorites} handleClick={(isPressed) => this.handleClick(isPressed)}/>
         </MoviePanel>
         <div className="Panel">
           <div className="Grid Grid--alignCenter">

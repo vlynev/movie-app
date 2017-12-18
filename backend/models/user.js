@@ -35,6 +35,14 @@ function isMovieAleadyAdded(movie_Id, user) {
     .includes(movie_Id.toString());
 }
 
+function removeFavorite(user, movie_Id) {
+  const favoriteIndex = user.favoriteMovies
+    .map(movieId => movieId.toString())
+    .indexOf(movie_Id);
+
+  user.favoriteMovies.splice(favoriteIndex, 1);
+}
+
 async function addFavoriteMovie(user, movieDBId) {
   const movie = await findMovieById(movieDBId);
   // if no movie found an not found exception will be throw
@@ -46,6 +54,16 @@ async function addFavoriteMovie(user, movieDBId) {
   }
 
   return false;
+}
+
+async function removeFavoriteMovie(user, movieDBId) {
+  const movie = await findMovieById(movieDBId);
+  // if no movie found an not found exception will be throw
+
+  removeFavorite(user, movie._id);
+
+  debug(`saving user ${user._id} without movie ${movie.id}`);
+  return await user.save();
 }
 
 async function getFavoriteMovies(id) {
@@ -60,6 +78,8 @@ module.exports = {
   findById,
   create,
   isMovieAleadyAdded,
+  removeFavorite,
   addFavoriteMovie,
+  removeFavoriteMovie,
   getFavoriteMovies
 };

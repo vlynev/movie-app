@@ -54,6 +54,16 @@ export const addFavorites = (movieDBId) => {
 };
 
 /**
+ * @param movieDBId of movie
+ * */
+export const removeFavorites = (movieDBId) => {
+  const url = buildUrl(types.REMOVE_FAVORITES, movieDBId);
+  return request(url, {
+    method: 'DELETE'
+  });
+};
+
+/**
  * Get movie
  * @return {Promise<object>}
  * */

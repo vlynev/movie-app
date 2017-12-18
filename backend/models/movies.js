@@ -15,6 +15,7 @@ const MovieSchema = new mongoose.Schema({
   backdrop_path: String,
   overview: String,
   original_title: String,
+  in_favorites: Boolean
 });
 
 const Movie = mongoose.model('Movie', MovieSchema);

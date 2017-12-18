@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Movies = require('../models/movies');
 const User = require('../models/user');
-const { body, validationResult } = require('express-validator/check');
-const { matchedData } = require('express-validator/filter');
+const {body, validationResult} = require('express-validator/check');
+const {matchedData} = require('express-validator/filter');
 const debug = require('debug')('server:router:movies');
 
 /* GET movies. */
@@ -18,9 +18,9 @@ router.param('movieDBId', async (req, res, next, id) => {
       return next(e);
     }
 
-    req.movie = movie;
+    movie.in_favorites = User.isMovieAleadyAdded(movie._id, req.user);
 
-    //req.movie.inFavorites = User.isMovieAleadyAdded(movie._id, req.user)
+    req.movie = movie;
 
     return next();
   } catch (e) {
@@ -32,14 +32,14 @@ router.param('movieDBId', async (req, res, next, id) => {
 router.get('/', async (req, res, next) => {
   try {
     const movies = await Movies.discoverMovie();
-    res.json({ movies });
+    res.json({movies});
   } catch (e) {
     next(e);
   }
 });
 
 router.get('/:movieDBId(\\d+)', async (req, res) => {
-  return res.json({ movie: req.movie })
+  return res.json({movie: req.movie})
 });
 
 router.get('/configuration', async (req, res, next) => {
@@ -56,14 +56,14 @@ router.post('/search', [
 ], async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return next({ message: 'Invalid data', mapped: errors.mapped(), status: 422});
+    return next({message: 'Invalid data', mapped: errors.mapped(), status: 422});
   }
 
-  const { name } = matchedData(req);
+  const {name} = matchedData(req);
   debug(`looking for movie with name '${name}'`);
   try {
     const movies = await Movies.findByName(name);
-    res.json({ movies });
+    res.json({movies});
   } catch (e) {
     next(e);
   }

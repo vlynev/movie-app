@@ -6,22 +6,22 @@ export default class FavoritesStar extends React.Component{
     super(props);
 
     this.state = {
-      isPressed: props.isPressed && false
+      pressed: props.pressed || false
     }
   }
 
   handleClick() {
-    const isPressed = !this.state.isPressed;
+    const pressed = !this.state.pressed;
 
     this.setState({
-      isPressed: isPressed
+      pressed: pressed
     });
 
-    this.props.handleClick(isPressed);
+    this.props.handleClick(pressed);
   }
 
   render() {
-    const content = this.state.isPressed ? (<span>★</span>) : (<span>☆</span>);
+    const content = this.state.pressed ? (<span>★</span>) : (<span>☆</span>);
 
     return (
       <span className="favorites-star" onClick={() => this.handleClick()}>

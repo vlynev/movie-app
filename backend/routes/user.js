@@ -10,6 +10,10 @@ const passport = require('passport');
 const router = express.Router();
 const securedRouter = express.Router();
 
+/**
+ * @action create user
+ * @POST /
+ * */
 router.post('/',[
   body('username').exists(),
   body('password').exists(),
@@ -31,6 +35,10 @@ router.post('/',[
   }
 });
 
+/**
+ * @action get favorites
+ * @GET /favorites
+ * */
 securedRouter.get('/favorites', async (req, res, next) => {
   try {
     const movies = await User.getFavoriteMovies(req.user._id);
@@ -40,6 +48,10 @@ securedRouter.get('/favorites', async (req, res, next) => {
   }
 });
 
+/**
+ * @action add to favorites
+ * @POST /favorites
+ * */
 securedRouter.post('/favorites', [
   body('movieDBId').exists(),
 ], async (req, res, next) => {
@@ -52,6 +64,24 @@ securedRouter.post('/favorites', [
 
   try {
     await User.addFavoriteMovie(req.user, movieDBId);
+    res.json({ message: 'ok' });
+  } catch (e) {
+    console.log(e);
+    next(e);
+  }
+});
+
+/**
+ * @action remove from favorites
+ * @POST /favorites
+ * */
+securedRouter.delete('/favorites/:movieDBId', [
+  body('movieDBId').exists(),
+], async (req, res, next) => {
+  const movieDBId = req.params.movieDBId;
+
+  try {
+    await User.removeFavoriteMovie(req.user, movieDBId);
     res.json({ message: 'ok' });
   } catch (e) {
     console.log(e);
