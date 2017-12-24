@@ -5,11 +5,11 @@ export const setVal = (key, value) => {
     value = JSON.stringify(value);
   }
 
-  localStorage.setItem(key, value);
+  window.localStorage.setItem(key, value);
 };
 
 export const getVal = (key) => {
-  const value = localStorage.getItem(key);
+  const value = window.localStorage.getItem(key);
 
   if (!value) {
     return false;
@@ -23,5 +23,5 @@ export const getVal = (key) => {
 };
 
 export const clearVal = (key) => {
-  localStorage.removeItem(key);
+  window.localStorage.removeItem(key);
 };

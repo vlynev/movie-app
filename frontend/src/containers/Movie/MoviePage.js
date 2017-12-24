@@ -10,14 +10,13 @@ import * as configuration from '../../utils/api/configuration';
 
 import './MoviePage.css';
 
-const posterBaseUrl = configuration.getBasePosterUrl(configuration.poster_sizes.SINGLE);
-const backdropUrl = configuration.getBackdropUrl(configuration.backdrop_sizes.DEFAULT);
-
 export default class Movie extends React.Component {
   constructor(props) {
     super(props);
 
     this.movieId = this.props.match.params.id;
+    this.posterBaseUrl = configuration.getBasePosterUrl(configuration.poster_sizes.SINGLE);
+    this.backdropUrl = configuration.getBackdropUrl(configuration.backdrop_sizes.DEFAULT);
 
     this.state = {
       content: <Loader />
@@ -31,7 +30,7 @@ export default class Movie extends React.Component {
 
     const movie = await actions.getMovie(this.movieId);
 
-    console.log(`${backdropUrl}${movie.backdrop_path}`);
+    console.log(`${this.backdropUrl}${movie.backdrop_path}`);
 
     if (movie !== null) {
       this.setState({content: this.renderMovie(movie)});
@@ -63,7 +62,7 @@ export default class Movie extends React.Component {
             <div key={movie.id} className="movie-page Grid-cell">
               <div>
                 <div className="poster-container">
-                  <img src={`${posterBaseUrl}${movie.poster_path}`}/>
+                  <img src={`${this.posterBaseUrl}${movie.poster_path}`}/>
                 </div>
                 <div className="overview-container">
                   <p>{movie.overview}</p>

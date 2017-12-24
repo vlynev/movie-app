@@ -8,11 +8,11 @@ import * as configuration from '../../utils/api/configuration';
 
 import './BaseGridView.css';
 
-const posterBaseUrl = configuration.getBasePosterUrl(configuration.poster_sizes.GRID);
-
 export default class BaseGridView extends React.Component {
   constructor(props) {
     super(props);
+
+    this.posterBaseUrl = configuration.getBasePosterUrl(configuration.poster_sizes.GRID);
 
     this.state = {
       content: <Loader />
@@ -44,7 +44,7 @@ export default class BaseGridView extends React.Component {
     return (
       <div className="Grid-cell u-md-size1of3 movie-grid-item" key={movie.id}>
         <Link to={`/movie/${movie.id}`}>
-          <img src={`${posterBaseUrl}${movie.poster_path}`}/> <br/>
+          <img src={`${this.posterBaseUrl}${movie.poster_path}`}/> <br/>
           <h3>{movie.original_title}</h3>
         </Link>
       </div>
